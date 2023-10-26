@@ -1,0 +1,55 @@
+body {
+    min-height: 3000px;
+    position: relative;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: auto;
+}
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: auto;
+}
+
+
+@font-face {
+    font-family: 'SFProText';
+    src: url('./fonts/SFProText-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: auto;
+}
+
+
+@font-face {
+    font-family: 'SFProDisplay';
+    src: url('./fonts/SFProDisplay-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: auto;
+}
