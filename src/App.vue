@@ -1,40 +1,31 @@
 <template> 
-<div class="container">
-  <button class="page-up-button" @click="toUp()"></button>
-
-  <div class="light-block">
-    <div class="light-block-container">
-      <MainMenu  />
-      <h1>Техническая поддержка сайтов, CRM систем и мобильных приложений</h1>
-      <p>Профессиональное техническое сопровождение и обслуживание сайтов: полный комплекс услуг от опытных экспертов</p>
-      <UserButton class="connection-button" title="Подключиться" />
-      <UserButton class="page-down-button" @click="toBottom()" />
-
-      <img class="analitic-image" src="./assets/img2.svg" alt="Analitic image">
-
+  <div class="container">
+    <button class="page-up-button" @click="toUp()"></button>
+    <div class="light-block">
+      <div class="light-block-container">
+        <MainMenu  />
+        <h1>Техническая поддержка сайтов, CRM систем и мобильных приложений</h1>
+        <p class="site-description">Профессиональное техническое сопровождение и обслуживание сайтов: полный комплекс услуг от опытных экспертов
+          <img class="user-image" src="./assets/img3.svg" alt="User image">
+        </p>
+        <UserButton class="connection-button" title="Подключиться" />
+        <UserButton class="page-down-button" @click="toBottom()" />
+        <img class="analitic-image" src="./assets/img2.svg" alt="Analitic image">
+      </div>
     </div>
-
+    <div class="dark-block">
+      <ContactsMenu @updateParent="onUpdateModalVisible" />
+      <img class="todolist-image" src="./assets/img1.svg" alt="Todo list image">
+    </div>
   </div>
-
-  <div class="dark-block">
-    <ContactsMenu />
-    <img class="todolist-image" src="./assets/img1.svg" alt="Todo list image">
-
-  </div>
-
-
-  
- 
-</div>
-
-  
+  <ContactModal :isShown="isModalShown" @updateVisible="onHideModalVisible" />  
 </template>
 
 <script>
 import MainMenu from './components/MainMenu.vue'
 import ContactsMenu from './components/ContactsMenu.vue'
 import UserButton from './components/UserButton.vue'
-
+import ContactModal from './components/ContactModal.vue'
 
 export default {
   name: 'App',
@@ -42,7 +33,11 @@ export default {
     MainMenu,
     ContactsMenu,
     UserButton,
-    
+    ContactModal    
+  },
+
+  data() {
+    return { isModalShown: false }
   },
 
   methods:{
@@ -52,17 +47,23 @@ export default {
 
     toUp(){
       window.scrollTo(0, 0);
+    },
+
+    onUpdateModalVisible(someData) {
+        this.isModalShown = someData
+      },
+
+    onHideModalVisible() {
+      this.isModalShown = false
     }
   }
 }
 </script>
 
 <style lang="scss">
-
 .container {
   max-width: 1440px;
   margin: 50px auto;
-
   min-height: 800px;
   height: 100%;
   display: flex;
@@ -81,7 +82,7 @@ export default {
     margin-bottom: 60px;
     max-width: 570px;
     color:  #08123A;
-    font-family: 'SF Pro Display';
+    font-family: 'SF Pro Display', 'Arial', sans-serif;
     font-size: 48px;
     font-weight: 600;
     line-height: 58px; 
@@ -91,9 +92,8 @@ export default {
     margin-bottom: 60px;
     max-width: 560px;
     color:  #5F6B77;
-    font-family: Inter;
+    font-family: 'Inter', 'Arial', sans-serif;
     font-size: 20px;
-
     font-weight: 400;
     line-height: 28px; 
    }
@@ -104,13 +104,10 @@ export default {
     border-radius: 10px;
     background:#506CCF;
     box-shadow: 0px 20px 35px 0px #DFE8F4;
-
     color: #FFF;
     text-align: center;
-
-    font-family: SF Pro Text;
+    font-family: 'SF Pro Text', 'Arial', sans-serif;
     font-size: 16px;
-
     font-weight: 500;
     line-height: 22px;
    }
@@ -129,9 +126,7 @@ export default {
 
 .dark-block {
   min-width: 460px;
-  //flex-grow: 1;
   background: linear-gradient(45deg, #506CCF 0%, #3453C2 100%);
-
   position: relative;
 
    &::before {
@@ -192,7 +187,16 @@ export default {
   position: absolute;
   z-index: 10;
   right: -175px;
-  bottom: 80px;
-  
+  bottom: 80px;  
+}
+
+.site-description {
+  position: relative;
+
+  .user-image {
+    position: absolute;
+    bottom: -84px;
+    right: -22px;
+  }
 }
 </style>

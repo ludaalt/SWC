@@ -1,6 +1,5 @@
 <template>
-<button>{{title}}</button>
- 
+<button>{{title}}</button> 
 </template>
 
 <script>
@@ -21,7 +20,9 @@ button {
     border: none;
     background: none;
     cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
 }
-
-
 </style>

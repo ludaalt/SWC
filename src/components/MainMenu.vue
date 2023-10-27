@@ -22,7 +22,6 @@ export default {
 }
 </script>
 
-
 <style scoped lang="scss">
 nav {
   display: flex;
@@ -38,15 +37,11 @@ nav {
     li {
       padding: 12px 18px;
       position: relative;
-
       color:  #5F6B77;
-
       font-family: 'SF Pro Text', 'Arial', sans-serif;
       font-size: 16px;
-
       font-weight: 500;
       line-height: 20px; 
-
       
       &::after {
         content: '';
@@ -68,5 +63,4 @@ nav {
     }
   }
 }
-
 </style>
